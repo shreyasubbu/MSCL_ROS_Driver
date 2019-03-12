@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>MSCL</name>
+  <name>mscl_ros_driver</name>
   <version>0.0.0</version>
-  <description>The MSCL package</description>
+  <description>The MSCL ROS driver package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->

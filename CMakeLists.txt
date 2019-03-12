@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(MSCL)
+project(mscl_ros_driver)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
  add_compile_options(-std=c++11)
@@ -70,7 +70,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES MSCL
+  LIBRARIES mscl_ros_driver
   CATKIN_DEPENDS geometry_msgs nav_msgs message_runtime roscpp sensor_msgs std_msgs std_srvs tf2 tf2_ros
   DEPENDS system_lib
 )
@@ -95,14 +95,15 @@ include_directories(
 
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
- add_executable(${PROJECT_NAME}_node src/MSCL_node.cpp)
+ add_executable(${PROJECT_NAME}_main src/main.cpp)
 
 # set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
 
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
- target_link_libraries(${PROJECT_NAME}_node
+ target_link_libraries(${PROJECT_NAME}_main
    ${catkin_LIBRARIES}
+   ${CMAKE_SOURCE_DIR}/mscl_ros_driver/include/libmscl.so
  )
 
 
@@ -139,7 +140,7 @@ include_directories(
 ## Testing ##
 #############
 
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_MSCL.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_mscl_ros_driver.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
